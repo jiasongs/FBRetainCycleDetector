@@ -44,18 +44,18 @@ static NSArray *FBGetReferencesForObjectsInStructEncoding(FBIvarReference *ivar,
       size = sizeof(void *);
       align = _Alignof(void *);
     } else {
-//      @try {
-//        NSGetSizeAndAlignment(typeEncoding.c_str(),
-//                              &size,
-//                              &align);
-//      } @catch (NSException *e) {
-//        /**
-//         If we failed, we probably have C++ and ObjC cannot get it's size and alignment. We are skipping.
-//         If we would like to support it, we would need to derive size and alignment of type from the string.
-//         C++ does not have reflection so we can't really do that unless we create the mapping ourselves.
-//         */
-//        break;
-//      }
+      @try {
+        NSGetSizeAndAlignment(typeEncoding.c_str(),
+                              &size,
+                              &align);
+      } @catch (NSException *e) {
+        /**
+         If we failed, we probably have C++ and ObjC cannot get it's size and alignment. We are skipping.
+         If we would like to support it, we would need to derive size and alignment of type from the string.
+         C++ does not have reflection so we can't really do that unless we create the mapping ourselves.
+         */
+        break;
+      }
     }
 
 
